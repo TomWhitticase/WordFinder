@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Finder</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <div id="title">
+            WORD FINDER
+        </div>
+        <div>
+            <label for="correct-letters-div" class="inline">Correct Letters</label>
+            <div id="correct-letters-div" class="inline">
+                
+            </div>
+        </div>
+        
+        <div>
+            <label for="included-letters" class="inline">Included Letters</label>
+            <div id="included-letters-div" class="inline">
+               
+            </div>
+        </div>
+        <div>
+            <label for="incorrect-letters">Incorrect Letters</label>
+            <input id="incorrect-letters" type="text">
+        </div>
+        <div>
+            <label for="word-length">Word length</label>
+            <input id="word-length" min="3" max="12" type="number" value="5">
+        </div>
+        <div>
+            <button id="find-words" class="green-btn grow">Find words</button>
+        </div>
+        <div id="possible-words"></div>
+        
+    </main>
+</html>
