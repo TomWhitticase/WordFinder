@@ -5,6 +5,16 @@ document
   .addEventListener("input", updateCorrectLetters);
 document.addEventListener("DOMContentLoaded", updateCorrectLetters);
 
+document.getElementById("open-info").addEventListener("click", openInfo);
+document.getElementById("close-info").addEventListener("click", closeInfo);
+
+function openInfo() {
+  document.getElementById("info").style.display = "block";
+}
+function closeInfo() {
+  document.getElementById("info").style.display = "none";
+}
+
 function updateCorrectLetters() {
   let wordLength = document.getElementById("word-length").value;
   let correctLettersDiv = document.getElementById("correct-letters-div");
@@ -68,6 +78,19 @@ function findPossibleWords() {
     return word.length == wordLength;
   }
 
+  //remove included and possible letters from incorrect letters
+  incorrectLetters = incorrectLetters.split("").filter(filterIncorrectLetters);
+  function filterIncorrectLetters(letter) {
+    console.log(letter);
+    if (includedLetters.includes(letter) || correctLetters.includes(letter))
+      //remove from incorrect letters input
+      document.getElementById("incorrect-letters").value = document
+        .getElementById("incorrect-letters")
+        .value.replace(letter, "");
+    return false;
+    return true;
+  }
+
   //remove all words containing incorrect letters
   possibleWords = possibleWords.filter(checkIncorrectLetters);
   function checkIncorrectLetters(word) {
@@ -108,21 +131,11 @@ function findPossibleWords() {
       document.getElementById(i + "included").value.toUpperCase()
     );
   }
-  console.log(includedLettersPositions);
+
   possibleWords = possibleWords.filter(checkIncludedPositions);
   function checkIncludedPositions(word) {
     for (let i = 0; i < includedLettersPositions.length; i++) {
       if (includedLettersPositions[i].includes(word[i].toUpperCase())) {
-        console.log(
-          "DEL " +
-            word +
-            " " +
-            includedLettersPositions +
-            " Letter:" +
-            word[i] +
-            " is in " +
-            includedLettersPositions[i]
-        );
         return false;
       }
     }
