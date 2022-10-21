@@ -81,13 +81,13 @@ function findPossibleWords() {
   //remove included and possible letters from incorrect letters
   incorrectLetters = incorrectLetters.split("").filter(filterIncorrectLetters);
   function filterIncorrectLetters(letter) {
-    console.log(letter);
-    if (includedLetters.includes(letter) || correctLetters.includes(letter))
+    if (includedLetters.includes(letter) || correctLetters.includes(letter)) {
       //remove from incorrect letters input
       document.getElementById("incorrect-letters").value = document
         .getElementById("incorrect-letters")
         .value.replace(letter, "");
-    return false;
+      return false;
+    }
     return true;
   }
 
